@@ -16,6 +16,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using MediatR;
 using MeditRTest.Web.Core;
+using MeditRTest.Web.Core.Behaviors;
 using UpdatePortal.Service;
 
 
@@ -44,8 +45,9 @@ namespace MeditRTest.Web
 
             services.AddTransient<EmailSettings>();
             services.AddTransient<EmailService>();
-
+            
             services.AddMediatR(typeof(Startup));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(DatabaseLoginBehavior<,>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

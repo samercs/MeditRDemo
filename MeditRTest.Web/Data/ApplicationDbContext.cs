@@ -14,5 +14,6 @@ namespace MeditRTest.Web.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }

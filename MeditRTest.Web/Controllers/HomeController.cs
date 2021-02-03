@@ -27,9 +27,6 @@ namespace MeditRTest.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var response = await _mediator.Send(new Ping());
-            ViewBag.Str = response;
-            await _emailService.SendEmail("samer_mail_2006@yahoo.com", "samer", "samer");
             return View();
         }
 
