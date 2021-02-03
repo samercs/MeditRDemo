@@ -1,0 +1,24 @@
+﻿@model MeditRTest.Web.Data.Employee
+    <form method="post" asp-action="DeleteConfirmation" asp-route-id="@Model.Id">
+        <div class="card">
+            <div class="card-header">
+                <h1>
+                    Delete Employee?
+                </h1>
+            </div>
+            <div class="card-body">
+                Are you sure want to delete below employee?
+
+                <div>
+                    Name: @Model.Name
+                </div>
+                <div>
+                    Salary: @Model.Salary
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Delete</button>
+                <a asp-action="Index" class="btn btn-outline-primary">Cancel</a>
+            </div>
+        </div>
+    </form>

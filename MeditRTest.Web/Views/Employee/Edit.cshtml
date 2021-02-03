@@ -1,0 +1,30 @@
+﻿@model MeditRTest.Web.Data.Employee
+<form method="post" asp-action="Edit" asp-route-id="@Model.Id">
+    <div class="card">
+        <div class="card-header">
+            <h1>
+                Edit Employee
+            </h1>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label>Id:</label>
+                <div>
+                    <b>@Model.Id</b>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Name:</label>
+                <input name="name" value="@Model.Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Salary:</label>
+                <input name="salary" value="@Model.Salary" class="form-control" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a asp-action="Index" class="btn btn-outline-primary">Cancel</a>
+        </div>
+    </div>
+</form>

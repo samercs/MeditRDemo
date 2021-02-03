@@ -1,0 +1,31 @@
+﻿@model IList<MeditRTest.Web.Data.Employee>
+
+<a asp-action="Add">Add New</a>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var emp in Model)
+    {
+        <tr>
+            <td>
+                @emp.Id
+            </td>
+            <td>
+                @emp.Name
+            </td>
+            <td>
+                @emp.Salary
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@emp.Id">Remove</a> |
+                <a asp-action="Edit" asp-route-id="@emp.Id">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+
