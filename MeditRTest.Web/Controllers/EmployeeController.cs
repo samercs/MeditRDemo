@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using MeditRTest.Web.Core.Employee.CreateCommand;
+using MeditRTest.Web.Core.Employee.CreateNotification;
 using MeditRTest.Web.Core.Employee.DeleteCommand;
 using MeditRTest.Web.Core.Employee.EditCommand;
 using MeditRTest.Web.Core.Employee.GetAllQuery;
@@ -106,7 +107,6 @@ namespace MeditRTest.Web.Controllers
             {
                 Id = id
             });
-
             return RedirectToAction(nameof(Index));
         }
     }

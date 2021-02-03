@@ -15,6 +15,8 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using MediatR;
+using MeditRTest.Web.Core;
+using UpdatePortal.Service;
 
 
 namespace MeditRTest.Web
@@ -39,6 +41,9 @@ namespace MeditRTest.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddTransient<EmailSettings>();
+            services.AddTransient<EmailService>();
 
             services.AddMediatR(typeof(Startup));
         }

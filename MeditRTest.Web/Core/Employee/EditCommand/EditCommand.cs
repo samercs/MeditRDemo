@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using MeditRTest.Web.Core.Employee.CreateNotification;
 using MeditRTest.Web.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,12 @@ namespace MeditRTest.Web.Core.Employee.EditCommand
     public class EditCommandHandler: IRequestHandler<EditCommand, Data.Employee>
     {
         private readonly ApplicationDbContext _applicationDbContext;
-        public EditCommandHandler(ApplicationDbContext applicationDbContext)
+        private readonly IMediator _mediator;
+        public EditCommandHandler(ApplicationDbContext applicationDbContext, IMediator mediator)
         {
             _applicationDbContext = applicationDbContext;
+            _mediator = mediator;
+
         }
         public async Task<Data.Employee> Handle(EditCommand request, CancellationToken cancellationToken)
         {
@@ -31,6 +35,12 @@ namespace MeditRTest.Web.Core.Employee.EditCommand
                 _applicationDbContext.Entry(emp).State = EntityState.Modified;
                 await _applicationDbContext.SaveChangesAsync(cancellationToken);
             }
+
+            await _mediator.Publish(new EmployeeNotification()
+            {
+                Employee = emp,
+                ActionType = ActionType.Edit
+            }, cancellationToken);
 
             return emp;
         }
